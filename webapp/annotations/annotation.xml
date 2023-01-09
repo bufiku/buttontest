@@ -1,0 +1,97 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/sap/ZJW_DEMO_BUTTON_SRV/$metadata">
+        <edmx:Include Namespace="ZJW_DEMO_BUTTON_SRV" Alias="SAP"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+            <Annotations Target="SAP.ZI_JW_CDS_PROJType">
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>projDef</PropertyPath>
+                        <PropertyPath>projDesc</PropertyPath>
+                        <PropertyPath>projDefIntern</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="projDef"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="projDesc"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="projDefIntern"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Do Something"/>
+                            <PropertyValue Property="Action" String="ZJW_DEMO_BUTTON_SRV.ZJW_DEMO_BUTTON_SRV_Entities/myActionProj"/>
+                            <PropertyValue Property="RequiresContext" Bool="true"/>
+                            <PropertyValue Property="Inline" Bool="true"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <!-- <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="button"/>
+                        </Record> -->
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="FGProj">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="projDef"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="projDesc"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Project"/>
+                            <PropertyValue Property="ID" String="SCTProj"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#FGProj"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="to_wbs/@UI.LineItem#LIWbs"/>
+                            <PropertyValue Property="Label" String="WBS elements"/>
+                            <PropertyValue Property="ID" String="RefFCTProj"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.ZI_JW_CDS_PRPSType">
+                <Annotation Term="UI.LineItem" Qualifier="LIWbs">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="wbsDef"/>
+                            <PropertyValue Property="Label" String="WBS"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="wbsDesc"/>
+                            <PropertyValue Property="Label" String="WBS descr"/>
+                        </Record>
+                        <!-- <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="button"/>
+                            <PropertyValue Property="Label" String="Button"/>
+                        </Record> -->
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Action!"/>
+                            <PropertyValue Property="Action" String="ZJW_DEMO_BUTTON_SRV.ZJW_DEMO_BUTTON_SRV_Entities/myActionWBS"/>
+                            <PropertyValue Property="RequiresContext" Bool="true"/>
+                            <PropertyValue Property="Inline" Bool="true"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

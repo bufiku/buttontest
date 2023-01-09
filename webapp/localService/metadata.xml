@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZJW_DEMO_BUTTON_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZI_JW_CDS_PROJType" sap:label="Test for CDS with buttons project view" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="projDefIntern"/>
+                </Key>
+                <Property Name="projDefIntern" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="UpperCase"/>
+                <Property Name="projDef" Type="Edm.String" MaxLength="24" sap:display-format="UpperCase" sap:label="Project definition"/>
+                <Property Name="projDesc" Type="Edm.String" MaxLength="40" sap:label="Description"/>
+                <Property Name="projObjnr" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Object number"/>
+                <Property Name="button" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="TRUE"/>
+                <NavigationProperty Name="to_wbs" Relationship="ZJW_DEMO_BUTTON_SRV.assoc_52DAF298870F4D1DD6BFA5D76D1BBEDF" FromRole="FromRole_assoc_52DAF298870F4D1DD6BFA5D76D1BBEDF" ToRole="ToRole_assoc_52DAF298870F4D1DD6BFA5D76D1BBEDF"/>
+            </EntityType>
+            <EntityType Name="ZI_JW_CDS_PRPSType" sap:label="Test for CDS with buttons WBS view" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="projDefIntern"/>
+                    <PropertyRef Name="wbsDefIntern"/>
+                </Key>
+                <Property Name="wbsObjnr" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Object number"/>
+                <Property Name="button" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="TRUE"/>
+                <Property Name="projDefIntern" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="UpperCase"/>
+                <Property Name="wbsDefIntern" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="UpperCase"/>
+                <Property Name="wbsDef" Type="Edm.String" MaxLength="24" sap:display-format="UpperCase" sap:label="WBS Element"/>
+                <Property Name="wbsDesc" Type="Edm.String" MaxLength="40" sap:label="Description"/>
+                <NavigationProperty Name="to_proj" Relationship="ZJW_DEMO_BUTTON_SRV.assoc_2B04E00EA78AEBD832FEE993168926C4" FromRole="FromRole_assoc_2B04E00EA78AEBD832FEE993168926C4" ToRole="ToRole_assoc_2B04E00EA78AEBD832FEE993168926C4"/>
+            </EntityType>
+            <ComplexType Name="return">
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Message type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Message Class" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Number" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Message number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:label="Message text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LogNo" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Log Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LogMsgNo" Type="Edm.String" Nullable="false" MaxLength="6" sap:label="Message no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MessageV1" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Message Variable" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MessageV2" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Message Variable" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MessageV3" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Message Variable" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MessageV4" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Message Variable" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Parameter" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Parameter Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Row" Type="Edm.Int32" Nullable="false" sap:label="Parameter line" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Field" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Field name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="System" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Logical system" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <Association Name="assoc_52DAF298870F4D1DD6BFA5D76D1BBEDF" sap:content-version="1">
+                <End Type="ZJW_DEMO_BUTTON_SRV.ZI_JW_CDS_PROJType" Multiplicity="1" Role="FromRole_assoc_52DAF298870F4D1DD6BFA5D76D1BBEDF"/>
+                <End Type="ZJW_DEMO_BUTTON_SRV.ZI_JW_CDS_PRPSType" Multiplicity="*" Role="ToRole_assoc_52DAF298870F4D1DD6BFA5D76D1BBEDF"/>
+            </Association>
+            <Association Name="assoc_2B04E00EA78AEBD832FEE993168926C4" sap:content-version="1">
+                <End Type="ZJW_DEMO_BUTTON_SRV.ZI_JW_CDS_PRPSType" Multiplicity="1" Role="FromRole_assoc_2B04E00EA78AEBD832FEE993168926C4"/>
+                <End Type="ZJW_DEMO_BUTTON_SRV.ZI_JW_CDS_PROJType" Multiplicity="1" Role="ToRole_assoc_2B04E00EA78AEBD832FEE993168926C4"/>
+            </Association>
+            <EntityContainer Name="ZJW_DEMO_BUTTON_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZI_JW_CDS_PROJ" EntityType="ZJW_DEMO_BUTTON_SRV.ZI_JW_CDS_PROJType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_JW_CDS_PRPS" EntityType="ZJW_DEMO_BUTTON_SRV.ZI_JW_CDS_PRPSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_2B04E00EA78AEBD832FEE993168926C4" Association="ZJW_DEMO_BUTTON_SRV.assoc_2B04E00EA78AEBD832FEE993168926C4" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZI_JW_CDS_PRPS" Role="FromRole_assoc_2B04E00EA78AEBD832FEE993168926C4"/>
+                    <End EntitySet="ZI_JW_CDS_PROJ" Role="ToRole_assoc_2B04E00EA78AEBD832FEE993168926C4"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_52DAF298870F4D1DD6BFA5D76D1BBEDF" Association="ZJW_DEMO_BUTTON_SRV.assoc_52DAF298870F4D1DD6BFA5D76D1BBEDF" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZI_JW_CDS_PROJ" Role="FromRole_assoc_52DAF298870F4D1DD6BFA5D76D1BBEDF"/>
+                    <End EntitySet="ZI_JW_CDS_PRPS" Role="ToRole_assoc_52DAF298870F4D1DD6BFA5D76D1BBEDF"/>
+                </AssociationSet>
+                <FunctionImport Name="myActionProj" ReturnType="Collection(ZJW_DEMO_BUTTON_SRV.return)" m:HttpMethod="POST" sap:action-for="ZJW_DEMO_BUTTON_SRV.ZI_JW_CDS_PROJType" sap:applicable-path="button"/>
+                <FunctionImport Name="myActionWBS" ReturnType="Collection(ZJW_DEMO_BUTTON_SRV.return)" m:HttpMethod="POST" sap:action-for="ZJW_DEMO_BUTTON_SRV.ZI_JW_CDS_PRPSType" sap:applicable-path="button"/>
+            </EntityContainer>
+            <atom:link rel="self" href="http://nkn003.nkn.hosting.local:8000/sap/opu/odata/sap/ZJW_DEMO_BUTTON_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://nkn003.nkn.hosting.local:8000/sap/opu/odata/sap/ZJW_DEMO_BUTTON_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
