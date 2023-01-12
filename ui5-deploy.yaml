@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.5"
+metadata:
+  name: com.test.janw.buttontest
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: http://nkn003.nkn.hosting.local:8000
+        app:
+          name: ZBUTTONTEST
+          description: "Fiori app ButtonTest: applicable-path OSS 17215 - 2023"
+          package: Z_CHRONOS
+          transport: NETK9A007S
