@@ -8,6 +8,15 @@
     <edmx:DataServices>
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
             <Annotations Target="SAP.ZI_JW_CDS_PROJType">
+                <Annotation Term="com.sap.vocabularies.UI.v1.PresentationVariant">
+                <Record>
+                    <PropertyValue Property="RequestAtLeast">
+                        <Collection>
+                            <PropertyPath>button</PropertyPath>
+                        </Collection>
+                    </PropertyValue>
+                </Record>
+                </Annotation>
                 <Annotation Term="UI.SelectionFields">
                     <Collection>
                         <PropertyPath>projDef</PropertyPath>
@@ -67,7 +76,17 @@
                     </Collection>
                 </Annotation>
             </Annotations>
+
             <Annotations Target="SAP.ZI_JW_CDS_PRPSType">
+                <Annotation Term="com.sap.vocabularies.UI.v1.PresentationVariant">
+                <Record>
+                    <PropertyValue Property="RequestAtLeast">
+                        <Collection>
+                                <PropertyPath>button</PropertyPath>
+                        </Collection>
+                    </PropertyValue>
+                </Record>
+                </Annotation>            
                 <Annotation Term="UI.LineItem" Qualifier="LIWbs">
                     <Collection>
                         <Record Type="UI.DataField">
